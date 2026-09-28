@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MetaFarma PRO - Mini SaaS</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif;min-height:100vh}
+.screen{display:none;min-height:100vh}.screen.active{display:block}
+.top{padding:18px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222}
+.logo{font-weight:900;font-size:18px;letter-spacing:-1px}.logo span{background:#fff;color:#000;padding:2px 8px;border-radius:20px;margin-left:6px;font-size:11px}
+.container{padding:20px 16px 100px;max-width:480px;margin:0 auto}
+.card{background:#111;border:1px solid #222;border-radius:18px;padding:16px;margin-bottom:14px}
+.card-white{background:#fff;color:#000}
+.label{font-size:10px;letter-spacing:1.6px;opacity:0.6;font-weight:800;text-transform:uppercase;margin-bottom:6px}
+.big{font-size:28px;font-weight:900;letter-spacing:-1px}
+input,select{width:100%;background:#000;border:2px solid #2a2a2a;border-radius:12px;color:#fff;padding:14px;font-size:15px;font-weight:700;outline:none;margin-top:6px}
+input:focus{border-color:#fff}
+.btn{width:100%;background:#fff;color:#000;border:none;border-radius:14px;padding:16px;font-weight:900;font-size:13px;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;margin-top:12px}
+.btn-ghost{background:transparent;color:#fff;border:1px solid #333}
+.progress-wrap{background:#1e1e1e;height:10px;border-radius:10px;overflow:hidden;margin-top:10px}
+.progress{height:100%;background:#fff;transition:width .5s}
+.small{font-size:11px;opacity:0.6;line-height:1.4}
+.row{display:flex;gap:10px}.row .card{flex:1}
+.motiv{text-align:center;font-weight:900;font-size:13px;padding:12px;border:1px dashed #333;border-radius:12px;margin-bottom:12px}
+.list-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #1a1a1a;font-size:13px}
+.hero{text-align:center;padding:24px 16px}
+.hero h1{font-size:36px;font-weight:900;line-height:0.9;letter-spacing:-2px}
+.tabs{display:flex;background:#111;border:1px solid #222;border-radius:16px;padding:4px;margin:12px 16px}
+.tab{flex:1;text-align:center;padding:10px;border-radius:12px;font-size:11px;font-weight:800;cursor:pointer;opacity:0.6}
+.tab.active{background:#fff;color:#000;opacity:1}
+.range{width:100%;margin-top:8px}
+.pix-box{background:#000;color:#fff;border:1px solid #333;border-radius:16px;padding:14px;text-align:center;margin-top:14px}
+</style>
+</head>
+<body>
+
+<div id="login" class="screen active">
+<div class="hero"><h1>METAFARMA<br><span style="background:#fff;color:#000;padding:0 10px;border-radius:20px">PRO</span></h1><p class="small" style="margin-top:10px;opacity:0.8">MINI SAAS • 4 CATEGORIAS • VOCÊ ESCOLHE SUA META</p></div>
+<div class="container">
+<div class="card"><div class="label">Entrar no seu SaaS</div><input id="email" placeholder="Seu e-mail"><input id="senha" type="password" placeholder="Senha" style="margin-top:10px"><button class="btn" onclick="doLogin()">Entrar no Dashboard</button><div class="small" style="text-align:center;margin-top:12px">Demo: use qualquer e-mail/senha<br>Primeiro acesso já cria sua conta</div></div>
+<div class="card" style="text-align:center"><div class="label">O que é?</div><div style="font-size:14px;font-weight:700;line-height:1.4">Cada vendedor tem o direito de escolher sua própria meta em:<br><br><b>BONIFICADO • GENÉRICO<br>ÉTICO • PERFUMARIA</b><br><br><span style="opacity:0.6;font-weight:400">Controle separado por categoria, comissão e ranking.</span></div></div>
+</div>
+</div>
+
+<div id="onboard" class="screen">
+<div class="top"><div class="logo">METAFARMA <span>ONBOARD</span></div></div>
+<div class="container">
+<div class="card-white"><div class="label">Passo 1 de 2</div><div class="big">Sua Farmácia</div><div class="small" style="color:#333;margin-top:6px">Isso vai aparecer no ranking do seu time</div><input id="farmNome" placeholder="Nome da Farmácia" style="margin-top:14px;background:#f5f5f5;color:#000;border-color:#ddd"><input id="vendedorNome" placeholder="Seu nome" style="margin-top:10px;background:#f5f5f5;color:#000;border-color:#ddd"></div>
+<div class="card"><div class="label">Passo 2 de 2 - Escolha suas metas (você tem o direito)</div><div style="margin-top:12px"><div class="label">Bonificado (R$)</div><input id="obBon" type="number" value="45000"><input type="range" min="5000" max="100000" step="1000" value="45000" class="range" oninput="document.getElementById('obBon').value=this.value"></div><div style="margin-top:12px"><div class="label">Genérico (R$)</div><input id="obGen" type="number" value="15000"><input type="range" min="1000" max="50000" step="1000" value="15000" class="range" oninput="document.getElementById('obGen').value=this.value"></div><div style="margin-top:12px"><div class="label">Ético (R$)</div><input id="obEti" type="number" value="20000"><input type="range" min="1000" max="50000" step="1000" value="20000" class="range" oninput="document.getElementById('obEti').value=this.value"></div><div style="margin-top:12px"><div class="label">Perfumaria (R$)</div><input id="obPer" type="number" value="10000"><input type="range" min="1000" max="50000" step="1000" value="10000" class="range" oninput="document.getElementById('obPer').value=this.value"></div><button class="btn" onclick="finishOnboard()">Criar meu SaaS →</button></div>
+</div>
+</div>
+
+<div id="dash" class="screen">
+<div class="top"><div class="logo" id="logoFarm">METAFARMA</div><div class="small" onclick="logout()" style="cursor:pointer;border:1px solid #333;border-radius:20px;padding:6px 10px">SAIR</div></div>
+<div class="tabs"><div class="tab active" onclick="switchTab('d1')">DASH</div><div class="tab" onclick="switchTab('d2')">VENDAS</div><div class="tab" onclick="switchTab('d3')">PRO</div></div>
+<div id="d1">
+<div class="container" style="padding-top:12px">
+<div class="motiv" id="motiv">VOCÊ ESCOLHE SUA META. FOCO TOTAL NAS 4.</div>
+<div class="card-white"><div class="label">Meta Total Escolhida por Você</div><div class="big" id="totalMeta">R$ 90.000,00</div><div class="progress-wrap"><div id="barTotal" class="progress" style="background:#000"></div></div><div style="display:flex;justify-content:space-between;margin-top:6px"><span class="small" style="color:#333" id="pctTotal">0%</span><span class="small" style="color:#333" id="faltaTotal">Falta R$ 90.000</span></div></div>
+<div id="cardsCats" class="row" style="flex-wrap:wrap"></div>
+<div class="card"><div class="label">Quanto já vendeu até hoje (edite direto)</div><div class="row"><div style="flex:1"><div class="label">Bonificado</div><input id="vendBon" type="number" oninput="save()"></div><div style="flex:1"><div class="label">Genérico</div><input id="vendGen" type="number" oninput="save()"></div></div><div class="row" style="margin-top:10px"><div style="flex:1"><div class="label">Ético</div><input id="vendEti" type="number" oninput="save()"></div><div style="flex:1"><div class="label">Perfumaria</div><input id="vendPer" type="number" oninput="save()"></div></div></div>
+</div>
+</div>
+<div id="d2" style="display:none"><div class="container" style="padding-top:12px"><div class="card"><div class="label">Lançar venda</div><div class="row"><select id="catVenda" style="flex:1"><option value="bon">Bonificado</option><option value="gen">Genérico</option><option value="eti">Ético</option><option value="per">Perfumaria</option></select><input id="valorVenda" type="number" placeholder="R$" style="flex:1"></div><button class="btn" onclick="addVenda()">+ Adicionar</button><div id="listaVendas" style="margin-top:12px"></div></div></div></div>
+<div id="d3" style="display:none"><div class="container" style="padding-top:12px"><div class="card-white"><div class="label">Mini SaaS PRO</div><div class="big" style="color:#000">R$ 19,90/mês</div><div class="small" style="color:#333;margin-top:8px;line-height:1.5">• Time ilimitado + ranking por categoria<br>• Relatórios pro dono da farmácia<br>• Metas personalizadas por vendedor<br>• Suporte WhatsApp<br>• Gráficos de performance</div><div class="pix-box"><div style="font-weight:900">PAGAMENTO VIA PIX</div><div class="small" style="margin-top:6px;opacity:0.8">Chave PIX: seuemail@metafarma.com<br>Envie o comprovante no WhatsApp</div><div style="background:#fff;color:#000;border-radius:10px;padding:10px;margin-top:10px;font-weight:900">LIBERAÇÃO IMEDIATA</div></div><button class="btn" style="background:#000;color:#fff" onclick="alert('Aqui você coloca seu link da Kirvano / Stripe / Mercado Pago')">Assinar agora</button></div><div class="card"><div class="label">Como vender esse SaaS</div><div class="small" style="line-height:1.5">1. Hospede esse arquivo na Vercel (grátis)<br>2. Crie link de pagamento na Kirvano (R$ 19,90)<br>3. Mande nos grupos de farmácia: "App onde cada vendedor escolhe sua meta nas 4 categorias"<br>4. 20 clientes = R$ 398/mês recorrente</div></div></div></div>
+</div>
+
+<script>
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function doLogin(){
+let e=document.getElementById('email').value; if(!e){alert('Digite e-mail');return;}
+let onboardDone=localStorage.getItem('onboardDone');
+if(!onboardDone) showScreen('onboard'); else {load(); showScreen('dash');}
+}
+function finishOnboard(){
+let farm=document.getElementById('farmNome').value||'Minha Farmácia';
+let vend=document.getElementById('vendedorNome').value||'Vendedor';
+let metas={metaBon:parseFloat(document.getElementById('obBon').value)||0,metaGen:parseFloat(document.getElementById('obGen').value)||0,metaEti:parseFloat(document.getElementById('obEti').value)||0,metaPer:parseFloat(document.getElementById('obPer').value)||0,farm:farm,vendedor:vend,vendBon:0,vendGen:0,vendEti:0,vendPer:0};
+localStorage.setItem('metafarma4',JSON.stringify(metas)); localStorage.setItem('onboardDone','1');
+load(); showScreen('dash');
+}
+function logout(){localStorage.removeItem('onboardDone'); showScreen('login');}
+function fmt(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function getVals(){return JSON.parse(localStorage.getItem('metafarma4')||'{"metaBon":45000,"metaGen":15000,"metaEti":20000,"metaPer":10000,"vendBon":0,"vendGen":0,"vendEti":0,"vendPer":0}');}
+function save(){
+let v=getVals();
+v.vendBon=parseFloat(document.getElementById('vendBon').value)||0;
+v.vendGen=parseFloat(document.getElementById('vendGen').value)||0;
+v.vendEti=parseFloat(document.getElementById('vendEti').value)||0;
+v.vendPer=parseFloat(document.getElementById('vendPer').value)||0;
+localStorage.setItem('metafarma4',JSON.stringify(v)); render();
+}
+function render(){
+let v=getVals();
+let totalMeta=v.metaBon+v.metaGen+v.metaEti+v.metaPer;
+let totalVend=v.vendBon+v.vendGen+v.vendEti+v.vendPer;
+let pct=totalMeta>0?Math.min(100,totalVend/totalMeta*100):0;
+document.getElementById('totalMeta').textContent=fmt(totalMeta);
+document.getElementById('barTotal').style.width=pct+'%';
+document.getElementById('pctTotal').textContent=pct.toFixed(1)+'%';
+document.getElementById('faltaTotal').textContent='Falta '+fmt(Math.max(0,totalMeta-totalVend));
+document.getElementById('logoFarm').textContent=(v.farm||'METAFARMA').toUpperCase();
+let cats=[{nome:'BONIFICADO',meta:v.metaBon,vend:v.vendBon},{nome:'GENÉRICO',meta:v.metaGen,vend:v.vendGen},{nome:'ÉTICO',meta:v.metaEti,vend:v.vendEti},{nome:'PERFUMARIA',meta:v.metaPer,vend:v.vendPer}];
+let html='';
+cats.forEach(c=>{
+let p=c.meta>0?Math.min(100,c.vend/c.meta*100):0;
+let falta=Math.max(0,c.meta-c.vend);
+html+=`<div class="card" style="flex:1 1 48%"><div class="label">${c.nome}</div><div style="font-size:18px;font-weight:900">${fmt(c.vend)}<span style="font-size:10px;opacity:0.5"> / ${fmt(c.meta)}</span></div><div class="progress-wrap"><div class="progress" style="width:${p}%"></div></div><div style="display:flex;justify-content:space-between;margin-top:6px"><span class="small">${p.toFixed(0)}%</span><span class="small">${fmt(falta)}</span></div></div>`;
+});
+document.getElementById('cardsCats').innerHTML=html;
+document.getElementById('vendBon').value=v.vendBon;
+document.getElementById('vendGen').value=v.vendGen;
+document.getElementById('vendEti').value=v.vendEti;
+document.getElementById('vendPer').value=v.vendPer;
+}
+function load(){render(); renderVendas();}
+let vendas=JSON.parse(localStorage.getItem('vendas4')||'[]');
+function renderVendas(){
+let cont=document.getElementById('listaVendas'); if(!cont) return;
+cont.innerHTML='';
+vendas.slice().reverse().slice(0,20).forEach(v=>{cont.innerHTML+=`<div class="list-item"><span>${v.cat.toUpperCase()} • ${v.data}</span><b>${fmt(v.valor)}</b></div>`});
+if(vendas.length===0) cont.innerHTML='<div class="small" style="text-align:center;padding:8px">Nenhuma venda</div>';
+}
+function addVenda(){
+let cat=document.getElementById('catVenda').value;
+let val=parseFloat(document.getElementById('valorVenda').value); if(!val) return;
+let map={bon:'vendBon',gen:'vendGen',eti:'vendEti',per:'vendPer'};
+let mapNome={bon:'bonificado',gen:'genérico',eti:'ético',per:'perfumaria'};
+let v=getVals();
+v[map[cat]]=(v[map[cat]]||0)+val;
+localStorage.setItem('metafarma4',JSON.stringify(v));
+vendas.push({cat:mapNome[cat],valor:val,data:new Date().toLocaleDateString('pt-BR')});
+localStorage.setItem('vendas4',JSON.stringify(vendas));
+document.getElementById('valorVenda').value='';
+render(); renderVendas();
+}
+function switchTab(t){
+document.getElementById('d1').style.display=t==='d1'?'block':'none';
+document.getElementById('d2').style.display=t==='d2'?'block':'none';
+document.getElementById('d3').style.display=t==='d3'?'block':'none';
+document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
+if(t==='d1') document.querySelectorAll('.tab')[0].classList.add('active');
+if(t==='d2') document.querySelectorAll('.tab')[1].classList.add('active');
+if(t==='d3') document.querySelectorAll('.tab')[2].classList.add('active');
+}
+let mots=["VOCÊ ESCOLHE SUA META. FOCO TOTAL NAS 4.","CADA CATEGORIA CONTA.","DIREITO DO VENDEDOR ESCOLHER SUA META.","BONIFICADO + GENÉRICO + ÉTICO + PERFUMARIA."];
+let mi=0; setInterval(()=>{let el=document.getElementById('motiv'); if(el){mi=(mi+1)%mots.length; el.textContent=mots[mi];}},3500);
+if(localStorage.getItem('onboardDone')){load();}
+</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+</html>
